@@ -1,0 +1,8 @@
+todo attend CS2103T
+event wedding /from monday 2pm /to 8pm
+deadline prep for cs2101 /by tuesday night
+mark 2
+mark 3
+unmark 2
+list
+bye

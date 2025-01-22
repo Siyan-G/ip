@@ -4,12 +4,12 @@ public class Chatty {
 
     private static final String linebreak = "___________________________________________________________________";
     private static final String introMsg = "\n\tHello Master! I'm Chatty, your ever-ready personal assistant.\n\tHow can I help you today?";
-    private static final String exitMsg = "Goodbye Master! See you soon!";
+    private static final String exitMsg = "\n\tGoodbye Master! See you soon!";
     private Task[] taskList = new Task[100];
     private Integer taskCounter = 0;
 
     private void Response(String message) {
-        System.out.println("Chatty: " + message);
+        System.out.println("Chatty:" + message);
         System.out.println(linebreak);
     }
 
@@ -101,7 +101,6 @@ public class Chatty {
         }
     }
 
-
     public static void main(String[] args) {
 
         Chatty chatty = new Chatty();
@@ -109,7 +108,6 @@ public class Chatty {
         chatty.Intro();
 
         while (true) {
-            System.out.print("Master: ");
             String userInput = scanner.nextLine();
             chatty.handleCommand(userInput);
 
