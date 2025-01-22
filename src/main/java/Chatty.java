@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Chatty {
     public static void main(String[] args) {
         String linebreak = "____________________________________________________________";
@@ -6,7 +8,22 @@ public class Chatty {
         System.out.println(linebreak);
         System.out.println(introMsg);
         System.out.println(linebreak);
-        System.out.println(exitMsg);
-        System.out.println(linebreak);
+
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Master: ");
+            String userInput = scanner.nextLine();
+
+
+            if (userInput.equalsIgnoreCase("bye")) {
+                System.out.println(exitMsg);
+                System.out.println(linebreak);
+                break;
+            }
+
+            System.out.println("Chatty: " + userInput);
+            System.out.println(linebreak);
+        }
     }
 }
