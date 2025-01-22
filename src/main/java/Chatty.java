@@ -10,7 +10,7 @@ public class Chatty {
         System.out.println(linebreak);
 
         Scanner scanner = new Scanner(System.in);
-        String[] taskList = new String[100];
+        Task[] taskList = new Task[100];
         int taskCounter = 0;
 
         while (true) {
@@ -28,7 +28,7 @@ public class Chatty {
                     System.out.println("Chatty: your task list is empty.");
                 }
                 else {
-                    System.out.printf("Chatty: your have %d tasks in progress:\n", taskCounter);
+                    System.out.printf("Chatty: your have %d tasks in the list:\n", taskCounter);
                     for (int i = 0; i < taskList.length; i++) {
                         if (taskList[i] == null) {
                             break;
@@ -40,7 +40,33 @@ public class Chatty {
                 continue;
             }
 
-            taskList[taskCounter] = userInput;
+            if (userInput.toLowerCase().startsWith("mark")) {
+                int taskNumber = Integer.parseInt(String.valueOf(userInput.charAt(5)));
+                if (taskNumber > taskCounter) {
+                    System.out.printf("Chatty: task %d does not exist.\n", taskNumber);
+                } else {
+                    taskList[taskNumber - 1].markDone();
+                    System.out.printf("Chatty: I've marked this task done:\n%d: ", taskNumber);
+                    System.out.println(taskList[taskNumber - 1]);
+                }
+                System.out.println(linebreak);
+                continue;
+            }
+
+            if (userInput.toLowerCase().startsWith("unmark")) {
+                int taskNumber = Integer.parseInt(String.valueOf(userInput.charAt(7)));
+                if (taskNumber > taskCounter) {
+                    System.out.printf("Chatty: task %d does not exist.\n", taskNumber);
+                } else {
+                    taskList[taskNumber - 1].unmarkDone();
+                    System.out.printf("Chatty: I've marked this task as not done yet:\n%d: ", taskNumber);
+                    System.out.println(taskList[taskNumber - 1]);
+                }
+                System.out.println(linebreak);
+                continue;
+            }
+
+            taskList[taskCounter] = new Task(userInput);
             taskCounter++;
             System.out.println("Chatty: I have added task: " + userInput);
             System.out.println(linebreak);
