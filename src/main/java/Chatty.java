@@ -3,9 +3,11 @@ import exception.ChattyInvalidArgumentException;
 import exception.ChattyInvalidInputException;
 import exception.ChattyTaskNotFoundException;
 
-import java.awt.desktop.SystemEventListener;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Chatty {
     private static final String LINE_BREAK = "___________________________________________________________________";
@@ -147,16 +149,22 @@ public class Chatty {
         }
         if (command.startsWith("deadline")) {
             String taskString = command.substring(8).trim();
-            String[] taskParts = taskString.split("/");
+            String[] taskParts = taskString.split("/by");
             if (taskParts.length == 2) {
-                String deadlineName = taskParts[0].trim();
-                String due = taskParts[1].substring(3).trim();
-                taskList.add(new Deadlines(deadlineName, due));
-                taskCounter++;
-                response.append("\n\tI've added this task to the list:\n");
-                response.append(String.format("\t%s\n", taskList.get(taskCounter - 1)));
-                response.append(String.format("\tNow you have %d tasks in the list.", taskCounter));
-                this.Response(response.toString());
+                try {
+                    String deadlineDescription = taskParts[0].trim();
+                    String dueString = taskParts[1].trim();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm");
+                    LocalDateTime deadline = LocalDateTime.parse(dueString, formatter);
+                    taskList.add(new Deadlines(deadlineDescription, deadline));
+                    taskCounter++;
+                    response.append("\n\tI've added this task to the list:\n");
+                    response.append(String.format("\t%s\n", taskList.get(taskCounter - 1)));
+                    response.append(String.format("\tNow you have %d tasks in the list.", taskCounter));
+                    this.Response(response.toString());
+                } catch (DateTimeParseException e) {
+                    System.out.println("Please enter a valid deadline format dd/MM/yyyy HHmm");
+                }
             }
             else {
                 throw new ChattyInvalidArgumentException("deadline");
