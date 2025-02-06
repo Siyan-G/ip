@@ -1,13 +1,16 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Deadlines extends Task {
 
-    private String deadline;
+    private LocalDateTime deadline;
 
-    public Deadlines(String name, String deadline) {
+    public Deadlines(String name, LocalDateTime deadline) {
         super(name);
         this.deadline = deadline;
     }
 
-    public Deadlines(boolean completed, String name, String deadline) {
+    public Deadlines(boolean completed, String name, LocalDateTime deadline) {
         super(name, completed);
         this.deadline = deadline;
     }
@@ -17,7 +20,9 @@ public class Deadlines extends Task {
         if (parts.length != 4) {
             throw new IllegalArgumentException("Invalid deadline format");
         }
-        return new Deadlines(parts[1].equals("1"), parts[2] , parts[3]);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        LocalDateTime deadline = LocalDateTime.parse(parts[3], formatter);
+        return new Deadlines(parts[1].equals("1"), parts[2] , deadline);
     }
 
     public String toCsv() {
@@ -29,6 +34,8 @@ public class Deadlines extends Task {
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + deadline + ")";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy HHmm");
+        String deadlineString = this.deadline.format(formatter);
+        return "[D]" + super.toString() + " (by: " + deadlineString + ")";
     }
 }
