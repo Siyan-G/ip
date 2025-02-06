@@ -3,28 +3,36 @@ import exception.ChattyInvalidArgumentException;
 import exception.ChattyInvalidInputException;
 import exception.ChattyTaskNotFoundException;
 
+import java.awt.desktop.SystemEventListener;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Chatty {
-    private static final String linebreak = "___________________________________________________________________";
-    private static final String introMsg = "\n\tHello Master! I'm Chatty, your ever-ready personal assistant.\n\tHow can I help you today?";
-    private static final String exitMsg = "\n\tGoodbye Master! See you soon!";
-    private ArrayList<Task> taskList = new ArrayList<>();
+    private static final String LINE_BREAK = "___________________________________________________________________";
+    private static final String INTRO_MSG = "\n\tHello Master! I'm Chatty, your ever-ready personal assistant.\n\tHow can I help you today?";
+    private static final String EXIT_MSG = "\n\tGoodbye Master! See you soon!";
+    private ArrayList<Task> taskList;
     private Integer taskCounter = 0;
+
+    public Chatty() {
+        ArrayList<Task> loadedtaskList = TaskStorageManager.loadTasks();
+        int taskCounter = loadedtaskList.size();
+        this.taskList = loadedtaskList;
+        this.taskCounter = taskCounter;
+    }
 
     private void Response(String message) {
         System.out.println("Chatty:" + message);
-        System.out.println(linebreak);
+        System.out.println(LINE_BREAK);
     }
 
     public void Intro() {
-        System.out.println(linebreak);
-        this.Response(introMsg);
+        System.out.println(LINE_BREAK);
+        this.Response(INTRO_MSG);
     }
 
     public void Exit() {
-        this.Response(exitMsg);
+        this.Response(EXIT_MSG);
     }
 
     public void handleCommand(String command) {
@@ -47,10 +55,10 @@ public class Chatty {
             else {
                 throw new ChattyInvalidInputException(command);
             }
+            TaskStorageManager.saveTasks(this.taskList);
         } catch (ChattyException e) {
             this.Response(e.getMessage());
         }
-
     }
 
     public void deleteTask(String command) throws ChattyTaskNotFoundException, ChattyInvalidArgumentException {
@@ -60,10 +68,11 @@ public class Chatty {
             if (taskId > taskCounter || taskId < 1) {
                 throw new ChattyTaskNotFoundException(taskId);
             } else {
+                Task taskDeleted = this.taskList.get(taskId - 1);
                 taskList.remove(taskId - 1);
                 taskCounter--;
                 this.Response(String.format("\n\tRoger! I've removed task %d from the list:\n\t%s\n\t" +
-                        "Now you have %d tasks in the list.", taskId,taskList.get(taskId - 1), taskCounter));
+                        "Now you have %d tasks in the list.", taskId, taskDeleted.toString(), taskCounter));
             }
         } else {
             throw new ChattyInvalidArgumentException(command);
