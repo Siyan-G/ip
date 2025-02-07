@@ -33,10 +33,11 @@ test {
 }
 
 application {
-    mainClass.set("chatty.Chatty")
+    mainClass = "chatty.Chatty"
 }
 
 shadowJar {
+    archiveFileName = "chatty.jar"
     archiveBaseName = "chatty"
     archiveClassifier = null
 }
