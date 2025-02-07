@@ -1,11 +1,11 @@
 package chatty.controller;
 
-
 import chatty.command.Command;
 import chatty.command.DeadlineCommand;
 import chatty.command.DeleteCommand;
 import chatty.command.EventCommand;
 import chatty.command.ExitCommand;
+import chatty.command.FindCommand;
 import chatty.command.ListCommand;
 import chatty.command.MarkCommand;
 import chatty.command.TodoCommand;
