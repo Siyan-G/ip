@@ -16,6 +16,14 @@ public class Parser {
         if (command.startsWith("list")) {
             return new ListCommand();
         }
+        if (command.startsWith("find")) {
+            String[] parts = command.split(" ");
+            if (parts.length != 2) {
+                throw new ChattyInvalidInputException("only one keyword is allowed");
+            } else {
+                return new FindCommand(parts[1]);
+            }
+        }
         if (command.startsWith("delete")) {
             String[] commandParts = command.split(" ");
             int taskId = Integer.parseInt(commandParts[1]);
@@ -93,6 +101,6 @@ public class Parser {
                 }
             }
         }
-        throw new ChattyInvalidInputException("Command not found");
+        throw new ChattyInvalidInputException(command);
     }
 }

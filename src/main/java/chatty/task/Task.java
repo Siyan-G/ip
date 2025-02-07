@@ -34,6 +34,20 @@ public class Task {
         return "[" + done + "] " + this.taskName;
     }
 
+    /**
+     * Checks if the task name contains the specified keyword (case-insensitive).
+     * <p>
+     * This method checks if the {@link Task}'s name contains the provided keyword, ignoring case differences.
+     * If the keyword exists within the task name, the method returns {@code true}, otherwise {@code false}.
+     * </p>
+     *
+     * @param keyWord The keyword to search for within the task name.
+     * @return {@code true} if the task name contains the keyword (case-insensitive), otherwise {@code false}.
+     */
+    public boolean contains(String keyWord) {
+        return this.taskName.contains(keyWord.toLowerCase());
+    }
+
     public String toCsv() {
         return String.format("%s,%s", this.taskName, this.isCompleted() ? 1 : 0);
     }
