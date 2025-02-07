@@ -1,4 +1,4 @@
-package task;
+package chatty.task;
 
 public class Task {
     private String taskName;

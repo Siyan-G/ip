@@ -1,10 +1,10 @@
-package command;
+package chatty.command;
 
-import controller.Storage;
-import controller.Ui;
-import exception.ChattyTaskNotFoundException;
-import task.Task;
-import task.TaskList;
+import chatty.controller.Storage;
+import chatty.controller.Ui;
+import chatty.exception.ChattyTaskNotFoundException;
+import chatty.task.Task;
+import chatty.task.TaskList;
 
 public class UnmarkCommand extends Command {
     private final int taskId;
@@ -18,6 +18,6 @@ public class UnmarkCommand extends Command {
         tasks.unmark(taskId);
         storage.saveTasks(tasks);
         Task unmarkedTask = tasks.getTask(taskId);
-        ui.sendMessage(String.format("Marked task %d %s as incompleted", taskId, unmarkedTask));
+        ui.sendMessage(String.format("Marked chatty.task %d %s as incompleted", taskId, unmarkedTask));
     }
 }

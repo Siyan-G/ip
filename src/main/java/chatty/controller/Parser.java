@@ -1,7 +1,7 @@
-package controller;
+package chatty.controller;
 
-import command.*;
-import exception.ChattyInvalidInputException;
+import chatty.command.*;
+import chatty.exception.ChattyInvalidInputException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -24,7 +24,7 @@ public class Parser {
         if (command.startsWith("mark")) {
             String[] commandParts = command.split(" ");
             if (commandParts.length != 2) {
-                throw new ChattyInvalidInputException("Wrong \"mark\" command format");
+                throw new ChattyInvalidInputException("Wrong \"mark\" chatty.command format");
             } else {
                 int taskId = Integer.parseInt(commandParts[1]);
                 return new MarkCommand(taskId);
@@ -33,7 +33,7 @@ public class Parser {
         if (command.startsWith("unmark")) {
             String[] commandParts = command.split(" ");
             if (commandParts.length != 2) {
-                throw new ChattyInvalidInputException("Wrong \"mark\" command format");
+                throw new ChattyInvalidInputException("Wrong \"mark\" chatty.command format");
             } else {
                 int taskId = Integer.parseInt(commandParts[1]);
                 return new UnmarkCommand(taskId);
@@ -56,14 +56,14 @@ public class Parser {
                 String[] eventParts = eventDetails.split("/from");
                 for (String part : eventParts) {
                     if (part.isEmpty()) {
-                        throw new ChattyInvalidInputException("Please follow correct event command format: i.e.\"event <description> /from <start> /to <end>\"");
+                        throw new ChattyInvalidInputException("Please follow correct event chatty.command format: i.e.\"event <description> /from <start> /to <end>\"");
                     }
                 }
                 String description = eventParts[0];
                 String[] durationParts = eventParts[1].split("/to");
                 for (String part : durationParts) {
                     if (part.trim().isEmpty()) {
-                        throw new ChattyInvalidInputException("Please follow correct event command format: i.e.\"event <description> /from <start> /to <end>\"");
+                        throw new ChattyInvalidInputException("Please follow correct event chatty.command format: i.e.\"event <description> /from <start> /to <end>\"");
                     }
                 }
                 String start = durationParts[0].trim();
@@ -79,7 +79,7 @@ public class Parser {
             } else {
                 String[] details = deadlineDetails.split("/by");
                 if (details.length != 2) {
-                    throw new ChattyInvalidInputException("Please input correct format of deadline command:\n\"deadline <description> /by <dd/mm/yyyy HHmm>");
+                    throw new ChattyInvalidInputException("Please input correct format of deadline chatty.command:\n\"deadline <description> /by <dd/mm/yyyy HHmm>");
                 } else {
                     try {
                         String deadlineDescription = details[0].trim();

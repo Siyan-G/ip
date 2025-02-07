@@ -1,9 +1,9 @@
-package command;
+package chatty.command;
 
-import controller.Storage;
-import controller.Ui;
-import exception.ChattyTaskNotFoundException;
-import task.TaskList;
+import chatty.controller.Storage;
+import chatty.controller.Ui;
+import chatty.exception.ChattyTaskNotFoundException;
+import chatty.task.TaskList;
 
 public abstract class Command {
     private boolean isExit;

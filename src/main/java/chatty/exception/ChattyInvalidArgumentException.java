@@ -1,4 +1,4 @@
-package exception;
+package chatty.exception;
 
 public class ChattyInvalidArgumentException extends ChattyException{
 
@@ -10,11 +10,11 @@ public class ChattyInvalidArgumentException extends ChattyException{
 
     @Override
     public String getMessage() {
-        return String.format(" Invalid argument detected for command: %s", commandType);
+        return String.format(" Invalid argument detected for chatty.command: %s", commandType);
     }
 
     @Override
     public String toString() {
-        return String.format(" Invalid argument detected for command: %s", commandType);
+        return String.format(" Invalid argument detected for chatty.command: %s", commandType);
     }
 }

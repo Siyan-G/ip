@@ -1,4 +1,4 @@
-package task;
+package chatty.task;
 
 public class Event extends Task {
 

@@ -1,9 +1,11 @@
-import command.Command;
-import controller.Parser;
-import controller.Storage;
-import controller.Ui;
-import exception.ChattyException;
-import task.*;
+package chatty;
+
+import chatty.command.Command;
+import chatty.controller.Parser;
+import chatty.controller.Storage;
+import chatty.controller.Ui;
+import chatty.exception.ChattyException;
+import chatty.task.*;
 
 public class Chatty {
     private TaskList taskList;

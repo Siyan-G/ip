@@ -1,12 +1,10 @@
-package command;
+package chatty.command;
 
-import controller.Storage;
-import controller.Ui;
-import exception.ChattyTaskNotFoundException;
-import task.Task;
-import task.TaskList;
-
-import java.util.List;
+import chatty.controller.Storage;
+import chatty.controller.Ui;
+import chatty.exception.ChattyTaskNotFoundException;
+import chatty.task.Task;
+import chatty.task.TaskList;
 
 public class DeleteCommand extends Command {
 

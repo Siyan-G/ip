@@ -1,41 +1,41 @@
 ___________________________________________________________________
-Chatty:
-	Hello Master! I'm Chatty, your ever-ready personal assistant.
+chatty.Chatty:
+	Hello Master! I'm chatty.Chatty, your ever-ready personal assistant.
 	How can I help you today?
 ___________________________________________________________________
-Chatty:
-	I've added this task to the list:
+chatty.Chatty:
+	I've added this chatty.task to the list:
 	[T][ ] attend CS2103T
 	Now you have 1 tasks in the list.
 ___________________________________________________________________
-Chatty:
-	I've added this task to the list:
+chatty.Chatty:
+	I've added this chatty.task to the list:
 	[E][ ] wedding (from: monday 2pm to 8pm)
 	Now you have 2 tasks in the list.
 ___________________________________________________________________
-Chatty:
-	I've added this task to the list:
+chatty.Chatty:
+	I've added this chatty.task to the list:
 	[D][ ] prep for cs2101 (by: tuesday night)
 	Now you have 3 tasks in the list.
 ___________________________________________________________________
-Chatty:
-	Nice! I've marked this task as done:
+chatty.Chatty:
+	Nice! I've marked this chatty.task as done:
 	[E][X] wedding (from: monday 2pm to 8pm)
 ___________________________________________________________________
-Chatty:
-	Nice! I've marked this task as done:
+chatty.Chatty:
+	Nice! I've marked this chatty.task as done:
 	[D][X] prep for cs2101 (by: tuesday night)
 ___________________________________________________________________
-Chatty:
-	Okay! I've marked this task as not done yet:
+chatty.Chatty:
+	Okay! I've marked this chatty.task as not done yet:
 	[E][ ] wedding (from: monday 2pm to 8pm)
 ___________________________________________________________________
-Chatty:
+chatty.Chatty:
 	You have 3 tasks in the list:
 	1. [T][ ] attend CS2103T
 	2. [E][ ] wedding (from: monday 2pm to 8pm)
 	3. [D][X] prep for cs2101 (by: tuesday night)
 ___________________________________________________________________
-Chatty:
+chatty.Chatty:
 	Goodbye Master! See you soon!
 ___________________________________________________________________

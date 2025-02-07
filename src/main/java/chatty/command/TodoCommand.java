@@ -1,10 +1,10 @@
-package command;
+package chatty.command;
 
-import controller.Storage;
-import controller.Ui;
-import task.Task;
-import task.TaskList;
-import task.Todo;
+import chatty.controller.Storage;
+import chatty.controller.Ui;
+import chatty.task.Task;
+import chatty.task.TaskList;
+import chatty.task.Todo;
 
 public class TodoCommand extends Command{
     private final String description;

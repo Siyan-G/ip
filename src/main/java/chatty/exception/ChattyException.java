@@ -1,4 +1,4 @@
-package exception;
+package chatty.exception;
 
 public class ChattyException extends Exception{
 

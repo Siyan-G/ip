@@ -1,12 +1,8 @@
-package controller;
+package chatty.controller;
 
-import task.*;
+import chatty.task.*;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Storage {
     private String filePath = "./data/tasks.csv";
@@ -42,7 +38,7 @@ public class Storage {
                             tasks.add(Event.fromCsv(line));
                             break;
                         default:
-                            System.out.println("Skipping unknown task type: " + line);
+                            System.out.println("Skipping unknown chatty.task type: " + line);
                         }
                     } catch (IllegalArgumentException e) {
                         System.out.println("Skipping corrupted line: " + line);

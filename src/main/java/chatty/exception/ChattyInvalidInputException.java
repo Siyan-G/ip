@@ -1,4 +1,4 @@
-package exception;
+package chatty.exception;
 
 public class ChattyInvalidInputException extends ChattyException{
 
@@ -10,11 +10,11 @@ public class ChattyInvalidInputException extends ChattyException{
 
     @Override
     public String getMessage() {
-        return String.format("I could not execute this command: %s", command);
+        return String.format("I could not execute this chatty.command: %s", command);
     }
 
     @Override
     public String toString() {
-        return String.format("I could not execute this command: %s", command);
+        return String.format("I could not execute this chatty.command: %s", command);
     }
 }

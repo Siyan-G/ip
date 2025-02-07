@@ -1,4 +1,4 @@
-package exception;
+package chatty.exception;
 
 public class ChattyTaskNotFoundException extends ChattyException {
 
@@ -10,11 +10,11 @@ public class ChattyTaskNotFoundException extends ChattyException {
 
     @Override
     public String getMessage() {
-        return String.format(" Sorry! task %d could not be found", taskId);
+        return String.format(" Sorry! chatty.task %d could not be found", taskId);
     }
 
     @Override
     public String toString() {
-        return String.format(" Sorry! task %d could not be found", taskId);
+        return String.format(" Sorry! chatty.task %d could not be found", taskId);
     }
 }

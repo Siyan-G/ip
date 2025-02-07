@@ -1,10 +1,10 @@
-package command;
+package chatty.command;
 
-import controller.Storage;
-import controller.Ui;
-import exception.ChattyTaskNotFoundException;
-import task.Task;
-import task.TaskList;
+import chatty.controller.Storage;
+import chatty.controller.Ui;
+import chatty.exception.ChattyTaskNotFoundException;
+import chatty.task.Task;
+import chatty.task.TaskList;
 
 public class MarkCommand extends Command {
     private final int taskId;
@@ -18,6 +18,6 @@ public class MarkCommand extends Command {
         tasks.mark(taskId);
         storage.saveTasks(tasks);
         Task markedTask = tasks.getTask(taskId);
-        ui.sendMessage(String.format("Marked task %d %s as completed", taskId, markedTask));
+        ui.sendMessage(String.format("Marked chatty.task %d %s as completed", taskId, markedTask));
     }
 }

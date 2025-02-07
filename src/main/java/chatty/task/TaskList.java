@@ -1,6 +1,6 @@
-package task;
+package chatty.task;
 
-import exception.ChattyTaskNotFoundException;
+import chatty.exception.ChattyTaskNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,13 +33,12 @@ public class TaskList {
     }
 
 
-    public boolean delete(int index) {
-        if (index < 0 || index >= numOfTasks) {
-            return false;
+    public void delete(int index) throws ChattyTaskNotFoundException {
+        if (index <= 0 || index > numOfTasks) {
+            throw new ChattyTaskNotFoundException(index);
         } else {
             tasks.remove(index - 1);
             numOfTasks--;
-            return true;
         }
     }
 
@@ -76,7 +75,7 @@ public class TaskList {
     @Override
     public String toString() {
         if (numOfTasks == 0) {
-            return "No task currently";
+            return "No chatty.task currently";
         } else {
             StringBuilder sb = new StringBuilder(String.format("You current have %d tasks in the list", this.getNumOfTasks()));
             for (int i = 0; i < numOfTasks; i++) {
