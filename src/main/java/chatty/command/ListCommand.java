@@ -23,6 +23,8 @@ public class ListCommand extends Command {
      */
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {
-        ui.sendMessage(String.format("You currently have %d tasks in the list%s", tasks.getNumOfTasks(), tasks.toString()));
+        ui.sendMessage(String.format("You currently have %d tasks in the list%s",
+                tasks.getNumOfTasks(),
+                tasks));
     }
 }

@@ -1,7 +1,11 @@
 package chatty.command;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import chatty.controller.Storage;
 import chatty.controller.Ui;
@@ -9,8 +13,6 @@ import chatty.exception.ChattyTaskNotFoundException;
 import chatty.task.Task;
 import chatty.task.TaskList;
 import chatty.task.Todo;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 /**
  * Unit test class for the {@link DeleteCommand} class.
@@ -22,9 +24,9 @@ import org.junit.jupiter.api.Test;
  */
 class DeleteCommandTest {
 
-    private TaskList tasks;    // List of tasks to be tested.
-    private Ui ui;             // Mocked user interface.
-    private Storage storage;   // Mocked storage.
+    private TaskList tasks; // List of tasks to be tested.
+    private Ui ui; // Mocked user interface.
+    private Storage storage; // Mocked storage.
 
     /**
      * Sets up the test environment before each test case.

@@ -1,8 +1,8 @@
 package chatty.task;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test class for the {@link Todo} class.
@@ -18,7 +18,7 @@ public class TodoTest {
      * Tests the {@link Todo#toString()} method to ensure that it returns the correct string format for a
      * {@link Todo} task that is not marked as done.
      * <p>
-     * The expected string format for a not-done task is "[T][ ] <task description>".
+     * The expected string format for a not-done task is "[T][ ] task description".
      * </p>
      */
     @Test
@@ -35,8 +35,8 @@ public class TodoTest {
      * Tests the {@link Todo#toString()} method to ensure that it returns the correct string format for a
      * {@link Todo} task when marked as done and then unmarked as done.
      * <p>
-     * The expected string format for a done task is "[T][X] <task description>" and for an undone task,
-     * it is "[T][ ] <task description>".
+     * The expected string format for a done task is "[T][X] task description" and for an undone task,
+     * it is "[T][ ] task description".
      * </p>
      */
     @Test

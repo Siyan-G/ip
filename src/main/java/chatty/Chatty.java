@@ -18,8 +18,8 @@ import chatty.task.TaskList;
 public class Chatty {
 
     private TaskList taskList; // List of tasks being managed.
-    private Storage storage;   // Storage for loading and saving tasks.
-    private Ui ui;             // User interface for interacting with the user.
+    private Storage storage; // Storage for loading and saving tasks.
+    private Ui ui; // User interface for interacting with the user.
 
     /**
      * Constructs a new Chatty instance, initializing the UI, storage, and task list.

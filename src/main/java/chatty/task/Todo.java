@@ -4,7 +4,8 @@ package chatty.task;
  * Represents a Todo task in the chatty application.
  * <p>
  * This class models a task of type "Todo", which has a description and a completion status.
- * It provides methods to convert a Todo task from and to CSV format, as well as to display the task in a user-friendly string format.
+ * It provides methods to convert a Todo task from and to CSV format, as well as to display the task in a
+ * user-friendly string format.
  * </p>
  */
 public class Todo extends Task {

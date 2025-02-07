@@ -1,10 +1,11 @@
 package chatty.command;
 
+import java.time.LocalDateTime;
+
 import chatty.controller.Storage;
 import chatty.controller.Ui;
 import chatty.task.Deadline;
 import chatty.task.TaskList;
-import java.time.LocalDateTime;
 
 /**
  * Represents a command to add a deadline to a list of tasks.
@@ -15,8 +16,8 @@ import java.time.LocalDateTime;
  * </p>
  */
 public class DeadlineCommand extends Command {
-    private String description;
-    private LocalDateTime deadline;
+    private final String description;
+    private final LocalDateTime deadline;
 
     /**
      * Constructs a DeadlineCommand with a specified description and deadline.
