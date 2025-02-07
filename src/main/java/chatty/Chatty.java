@@ -5,7 +5,7 @@ import chatty.controller.Parser;
 import chatty.controller.Storage;
 import chatty.controller.Ui;
 import chatty.exception.ChattyException;
-import chatty.task.*;
+import chatty.task.TaskList;
 
 public class Chatty {
     private TaskList taskList;
