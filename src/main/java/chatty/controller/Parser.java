@@ -7,8 +7,24 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * The Parser class is responsible for parsing user input commands and returning the corresponding Command object.
+ * <p>
+ * This class processes a given string command, identifies the type of command, and constructs the appropriate Command object.
+ * It also validates the format of the user input and throws exceptions for invalid inputs. Supported commands include
+ * tasks management (such as adding, deleting, marking, and unmarking tasks), as well as event and deadline management.
+ * </p>
+ */
 public class Parser {
 
+    /**
+     * Parses the given command and returns the corresponding Command object.
+     *
+     * @param ui The UI used for displaying messages to the user.
+     * @param command The user input command string to be parsed.
+     * @return The appropriate Command object based on the user input.
+     * @throws ChattyInvalidInputException If the command format is incorrect or unsupported.
+     */
     public static Command parse(Ui ui, String command) throws ChattyInvalidInputException {
         if (command.startsWith("bye")) {
             return new ExitCommand();
@@ -38,7 +54,6 @@ public class Parser {
                 int taskId = Integer.parseInt(commandParts[1]);
                 return new UnmarkCommand(taskId);
             }
-
         }
         if (command.startsWith("todo")) {
             String description = command.substring(4).trim();
@@ -70,7 +85,6 @@ public class Parser {
                 String end = durationParts[1].trim();
                 return new EventCommand(description, start, end);
             }
-
         }
         if (command.startsWith("deadline")) {
             String deadlineDetails = command.substring(8).trim();
@@ -79,7 +93,7 @@ public class Parser {
             } else {
                 String[] details = deadlineDetails.split("/by");
                 if (details.length != 2) {
-                    throw new ChattyInvalidInputException("Please input correct format of deadline chatty.command:\n\"deadline <description> /by <dd/mm/yyyy HHmm>");
+                    throw new ChattyInvalidInputException("Please input correct format of deadline chatty.command:\n\"deadline <description> /by <dd/mm/yyyy HHmm>\"");
                 } else {
                     try {
                         String deadlineDescription = details[0].trim();
