@@ -30,7 +30,7 @@ public class ChattyInvalidInputException extends ChattyException {
      */
     @Override
     public String getMessage() {
-        return String.format("I could not execute this chatty.command: %s", command);
+        return String.format("I could not execute this command: %s", command);
     }
 
     /**
@@ -43,7 +43,7 @@ public class ChattyInvalidInputException extends ChattyException {
      */
     @Override
     public String toString() {
-        return String.format("I could not execute this chatty.command: %s", command);
+        return String.format("I could not execute this command: %s", command);
     }
 }
 

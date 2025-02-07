@@ -31,7 +31,7 @@ public class ChattyInvalidArgumentException extends ChattyException {
      */
     @Override
     public String getMessage() {
-        return String.format(" Invalid argument detected for chatty.command: %s", commandType);
+        return String.format(" Invalid argument detected for command: %s", commandType);
     }
 
     /**
@@ -44,7 +44,6 @@ public class ChattyInvalidArgumentException extends ChattyException {
      */
     @Override
     public String toString() {
-        return String.format("ChattyInvalidArgumentException: Invalid argument for command %s", commandType);
+        return String.format(" Invalid argument detected for command: %s", commandType);
     }
 }
-

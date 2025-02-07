@@ -79,6 +79,20 @@ public class Task {
     }
 
     /**
+     * Checks if the task name contains the specified keyword (case-insensitive).
+     * <p>
+     * This method checks if the {@link Task}'s name contains the provided keyword, ignoring case differences.
+     * If the keyword exists within the task name, the method returns {@code true}, otherwise {@code false}.
+     * </p>
+     *
+     * @param keyWord The keyword to search for within the task name.
+     * @return {@code true} if the task name contains the keyword (case-insensitive), otherwise {@code false}.
+     */
+    public boolean contains(String keyWord) {
+        return this.taskName.contains(keyWord.toLowerCase());
+    }
+
+    /**
      * Returns a CSV string representation of the task.
      * <p>
      * The format is: "task name,completed status".
@@ -103,7 +117,7 @@ public class Task {
     public static Task fromCsv(String csv) throws IllegalArgumentException {
         String[] tokens = csv.split(",");
         if (tokens.length != 2) {
-            throw new IllegalArgumentException("Invalid CSV format for task.");
+            throw new IllegalArgumentException();
         }
         String taskName = tokens[0];
         boolean isCompleted = Boolean.parseBoolean(tokens[1]);
