@@ -12,8 +12,8 @@ import java.util.Scanner;
  */
 public class Ui {
     private static final String LINE_BREAK = "___________________________________________________________________";
-    private static final String INTRO_MSG = "Hello Master! I'm chatty.Chatty, your ever-ready personal assistant." +
-            "\nHow can I help you today?";
+    private static final String INTRO_MSG = "Hello Master! I'm chatty.Chatty, your ever-ready personal assistant."
+            + "\nHow can I help you today?";
     private static final String EXIT_MSG = "Goodbye Master! See you soon!";
     private static final String HELP_MSG = "Help is coming";
     private Scanner scanner = new Scanner(System.in);

@@ -107,7 +107,8 @@ public class Task {
     /**
      * Creates a Task object from a CSV string representation.
      * <p>
-     * The expected CSV format is: "task name,completed status" where the completed status is either 0 (not completed) or 1 (completed).
+     * The expected CSV format is: "task name,completed status" where the completed status is either 0 (not completed)
+     * or 1 (completed).
      * </p>
      *
      * @param csv The CSV string representing the task.

@@ -60,17 +60,17 @@ public class Storage {
                     try {
                         char taskType = line.charAt(0);
                         switch (taskType) {
-                            case 'T':
-                                tasks.add(Todo.fromCsv(line));
-                                break;
-                            case 'D':
-                                tasks.add(Deadline.fromCsv(line));
-                                break;
-                            case 'E':
-                                tasks.add(Event.fromCsv(line));
-                                break;
-                            default:
-                                System.out.println("Skipping unknown chatty.task type: " + line);
+                        case 'T':
+                            tasks.add(Todo.fromCsv(line));
+                            break;
+                        case 'D':
+                            tasks.add(Deadline.fromCsv(line));
+                            break;
+                        case 'E':
+                            tasks.add(Event.fromCsv(line));
+                            break;
+                        default:
+                            System.out.println("Skipping unknown chatty.task type: " + line);
                         }
                     } catch (IllegalArgumentException e) {
                         System.out.println("Skipping corrupted line: " + line);
@@ -97,7 +97,7 @@ public class Storage {
         file.getParentFile().mkdirs();
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            String[] taskStrings = tasks.toCSV();
+            String[] taskStrings = tasks.toCsv();
             for (String taskString : taskStrings) {
                 writer.write(taskString);
                 writer.newLine();

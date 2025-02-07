@@ -4,7 +4,8 @@ package chatty.exception;
  * Represents an exception that is thrown when an invalid input is detected for a chatty command.
  * <p>
  * This exception extends the {@link ChattyException} class and is used to indicate that an invalid input
- * was passed for a specific command in the chatty application. It provides details about the command that caused the error.
+ * was passed for a specific command in the chatty application. It provides details about the command that
+ * caused the error.
  * </p>
  */
 public class ChattyInvalidInputException extends ChattyException {

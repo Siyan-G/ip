@@ -15,9 +15,9 @@ import chatty.task.TaskList;
  */
 public class EventCommand extends Command {
 
-    String eventDescription;
-    String startTime;
-    String endTime;
+    private final String eventDescription;
+    private final String startTime;
+    private final String endTime;
 
     /**
      * Constructs an EventCommand with a specified event description, start time, and end time.

@@ -1,15 +1,16 @@
 package chatty.task;
 
-import chatty.exception.ChattyTaskNotFoundException;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import chatty.exception.ChattyTaskNotFoundException;
 
 /**
  * Represents a list of tasks in the chatty application.
  * <p>
  * This class provides methods for managing tasks, including adding tasks, marking/unmarking tasks, deleting tasks,
- * and converting the task list to a CSV format. It also provides methods for accessing and displaying the list of tasks.
+ * and converting the task list to a CSV format. It also provides methods for accessing and displaying the list of
+ * tasks.
  * </p>
  */
 public class TaskList {
@@ -124,7 +125,7 @@ public class TaskList {
      *
      * @return An array of strings representing the tasks in CSV format.
      */
-    public String[] toCSV() {
+    public String[] toCsv() {
         String[] taskList = new String[numOfTasks];
         for (int i = 0; i < numOfTasks; i++) {
             taskList[i] = tasks.get(i).toCsv();
@@ -135,13 +136,16 @@ public class TaskList {
     /**
      * Searches for tasks that contain the specified keyword in their names.
      * <p>
-     * This method iterates through the task list and checks if each task's name contains the provided keyword (case-insensitive).
-     * If a task's name contains the keyword, it is added to a new {@link TaskList} which is then returned.
+     * This method iterates through the task list and checks if each task's name contains the provided keyword
+     * (case-insensitive). If a task's name contains the keyword, it is added to a new {@link TaskList} which is then
+     * returned.
      * </p>
      *
      * @param keyword The keyword to search for in the task names.
-     * @return A {@link TaskList} containing all tasks whose names contain the keyword. If no tasks match, an empty task list is returned.
-     * @throws ChattyTaskNotFoundException If there are no tasks in the list or if none of the tasks contain the keyword.
+     * @return A {@link TaskList} containing all tasks whose names contain the keyword. If no tasks match, an empty
+     *         task list is returned.
+     * @throws ChattyTaskNotFoundException If there are no tasks in the list or if none of the tasks contain the
+     *         keyword.
      */
     public TaskList tasksContain(String keyword) throws ChattyTaskNotFoundException {
         TaskList taskList = new TaskList();
@@ -171,12 +175,12 @@ public class TaskList {
         if (numOfTasks == 0) {
             return "No task currently";
         } else {
-            StringBuilder sb = new StringBuilder(String.format("You current have %d tasks in the list", this.getNumOfTasks()));
+            StringBuilder sb = new StringBuilder(String.format("You current have %d tasks in the list",
+                    this.getNumOfTasks()));
             for (int i = 0; i < numOfTasks; i++) {
                 sb.append("\n").append(String.format("%d. %s", i + 1, tasks.get(i).toString()));
             }
             return sb.toString();
         }
     }
-
 }
