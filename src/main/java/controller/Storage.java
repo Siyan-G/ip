@@ -1,16 +1,23 @@
+package controller;
+
+import task.*;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskStorageManager {
-    private static final String DIRECTORY = "./data"; // Folder for tasks
-    private static final String FILE_PATH = DIRECTORY + "/tasks.csv";
+public class Storage {
+    private String filePath = "./data/tasks.csv";
 
-    public static ArrayList<Task> loadTasks() {
-        ArrayList<Task> tasks = new ArrayList<>();
-        File file = new File(FILE_PATH);
+    public Storage(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public TaskList loadTasks() {
+        TaskList tasks = new TaskList();
+        File file = new File(filePath);
 
         if (!file.exists()) {
             System.out.println("No existing tasks found. Creating a new local csv for storage");
@@ -29,10 +36,10 @@ public class TaskStorageManager {
                             tasks.add(Todo.fromCsv(line));
                             break;
                         case 'D':
-                            tasks.add(Deadlines.fromCsv(line));
+                            tasks.add(Deadline.fromCsv(line));
                             break;
                         case 'E':
-                            tasks.add(Events.fromCsv(line));
+                            tasks.add(Event.fromCsv(line));
                             break;
                         default:
                             System.out.println("Skipping unknown task type: " + line);
@@ -48,14 +55,15 @@ public class TaskStorageManager {
         return tasks;
     }
 
-    public static void saveTasks(List<Task> tasks) {
-        try {
-            Files.createDirectories(Paths.get(DIRECTORY));
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
-                for (Task task : tasks) {
-                    writer.write(task.toCsv());
-                    writer.newLine();
-                }
+    public void saveTasks(TaskList tasks) {
+        File file = new File(filePath);
+        file.getParentFile().mkdirs();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            String[] taskStrings = tasks.toCSV();
+            for (String taskString : taskStrings) {
+                writer.write(taskString);
+                writer.newLine();
             }
         } catch (IOException e) {
             System.out.println("Error saving tasks: " + e.getMessage());

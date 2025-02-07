@@ -10,11 +10,11 @@ public class ChattyInvalidInputException extends ChattyException{
 
     @Override
     public String getMessage() {
-        return String.format("I'm sorry! I could not execute this command: %s", command);
+        return String.format("I could not execute this command: %s", command);
     }
 
     @Override
     public String toString() {
-        return String.format("I'm sorry! I could not execute this command: %s", command);
+        return String.format("I could not execute this command: %s", command);
     }
 }
