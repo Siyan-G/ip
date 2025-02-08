@@ -30,12 +30,11 @@ public class Parser {
     /**
      * Parses the given command and returns the corresponding Command object.
      *
-     * @param ui The UI used for displaying messages to the user.
      * @param command The user input command string to be parsed.
      * @return The appropriate Command object based on the user input.
      * @throws ChattyInvalidInputException If the command format is incorrect or unsupported.
      */
-    public static Command parse(Ui ui, String command) throws ChattyInvalidInputException {
+    public static Command parse(String command) throws ChattyInvalidInputException {
         if (command.startsWith("bye")) {
             return new ExitCommand();
         }

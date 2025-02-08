@@ -1,9 +1,9 @@
 package chatty.command;
 
 import chatty.controller.Storage;
-import chatty.controller.Ui;
 import chatty.exception.ChattyTaskNotFoundException;
 import chatty.task.TaskList;
+import chatty.ui.Ui;
 
 /**
  * Represents a command that allows the user to find tasks based on a keyword.
@@ -38,12 +38,12 @@ public class FindCommand extends Command {
      * @throws ChattyTaskNotFoundException If an error occurs while searching for tasks (e.g., invalid task access).
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws ChattyTaskNotFoundException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws ChattyTaskNotFoundException {
         TaskList relevantTasks = tasks.tasksContain(keyword);
         if (relevantTasks == null || relevantTasks.getNumOfTasks() == 0) {
-            ui.sendMessage("No task found with keyword " + keyword);
+            return ui.getMessage("No task found with keyword " + keyword);
         } else {
-            ui.sendMessage(String.format("Found %d task(s) with keyword: %s%s",
+            return ui.getMessage(String.format("Found %d task(s) with keyword: %s%s",
                     relevantTasks.getNumOfTasks(),
                     this.keyword,
                     relevantTasks.toString()));

@@ -1,10 +1,9 @@
 package chatty.command;
 
 import chatty.controller.Storage;
-import chatty.controller.Ui;
 import chatty.exception.ChattyTaskNotFoundException;
 import chatty.task.TaskList;
-
+import chatty.ui.Ui;
 /**
  * Represents an abstract command that can be executed.
  * Each command may modify the task list, interact with the user, and update storage.
@@ -46,5 +45,5 @@ public abstract class Command {
      * @param storage The storage to save or load data.
      * @throws ChattyTaskNotFoundException If the specified task is not found.
      */
-    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws ChattyTaskNotFoundException;
+    public abstract String execute(TaskList tasks, Ui ui, Storage storage) throws ChattyTaskNotFoundException;
 }

@@ -1,11 +1,10 @@
 package chatty.command;
 
 import chatty.controller.Storage;
-import chatty.controller.Ui;
 import chatty.exception.ChattyTaskNotFoundException;
 import chatty.task.Task;
 import chatty.task.TaskList;
-
+import chatty.ui.Ui;
 /**
  * Represents a command to delete a task from the task list.
  * <p>
@@ -37,11 +36,11 @@ public class DeleteCommand extends Command {
      * @throws ChattyTaskNotFoundException If the task with the given index is not found in the task list.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws ChattyTaskNotFoundException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws ChattyTaskNotFoundException {
         Task deletedTask = tasks.getTask(taskIndex);
         tasks.delete(taskIndex);
         storage.saveTasks(tasks);
-        ui.sendMessage(String.format("Task %d %s has been deleted", taskIndex, deletedTask));
+        return ui.getMessage(String.format("Task %d %s has been deleted", taskIndex, deletedTask));
     }
 }
 

@@ -3,16 +3,16 @@ package chatty;
 import chatty.command.Command;
 import chatty.controller.Parser;
 import chatty.controller.Storage;
-import chatty.controller.Ui;
 import chatty.exception.ChattyException;
 import chatty.task.TaskList;
+import chatty.ui.Ui;
 
 /**
- * The main class that runs the Chatty task management application.
+ * The {@code Chatty} class serves as the main entry point for the Chatty task management application.
  * <p>
- * This class is responsible for initializing the user interface (UI), managing task storage,
- * and interacting with the task list. It runs a loop that continuously accepts user commands,
- * parses them, and executes the corresponding actions until the user decides to exit.
+ * It initializes the user interface (UI), manages task storage, and interacts with the task list.
+ * The application runs by continuously accepting user commands, parsing them, and executing the
+ * corresponding actions until the user chooses to exit.
  * </p>
  */
 public class Chatty {
@@ -22,8 +22,10 @@ public class Chatty {
     private Ui ui; // User interface for interacting with the user.
 
     /**
-     * Constructs a new Chatty instance, initializing the UI, storage, and task list.
-     * The task list is loaded from the specified CSV file.
+     * Constructs a new {@code Chatty} instance, initializing the UI, storage, and task list.
+     * <p>
+     * The task list is loaded from the specified CSV file. If loading fails, an empty task list is initialized.
+     * </p>
      *
      * @param filePath The file path of the CSV file containing saved tasks.
      */
@@ -33,40 +35,40 @@ public class Chatty {
         try {
             this.taskList = storage.loadTasks();
         } catch (Exception e) {
-            ui.showError(e.getMessage());
+            ui.sendError(e.getMessage());
             taskList = new TaskList();
         }
     }
 
     /**
-     * Starts the Chatty application by displaying the introduction message and entering the main command loop.
-     * The loop continues until the user exits the application.
+     * Returns the introductory message for the Chatty application.
+     * <p>
+     * This method retrieves a predefined welcome message from the UI to be displayed when the application starts.
+     * </p>
+     *
+     * @return A string containing the welcome message.
      */
-    public void run() {
-        ui.sendIntroMsg();
-        boolean isExit = false;
-        while (!isExit) {
-            try {
-                String fullCommand = ui.readCommand();
-                Command c = Parser.parse(ui, fullCommand);
-                c.execute(taskList, ui, storage);
-                isExit = c.isExit();
-            } catch (ChattyException e) {
-                ui.showError(e.getMessage());
-            }
-        }
+    public String intro() {
+        return ui.getIntroMsg();
     }
 
     /**
-     * The main method to start the Chatty application.
+     * Processes a user command and returns the appropriate response.
      * <p>
-     * This method initializes a new Chatty instance with the path to the tasks CSV file
-     * and starts the application by calling the {@link #run()} method.
+     * This method parses the input command, executes the corresponding action,
+     * and returns the response message. If an error occurs, an error message is returned instead.
      * </p>
      *
-     * @param args Command line arguments (not used in this version).
+     * @param input The user command as a string.
+     * @return The response message after executing the command.
+     * @throws ChattyException If the command results in an error.
      */
-    public static void main(String[] args) {
-        new Chatty("./data/tasks.csv").run();
+    public String getResponse(String input) throws ChattyException {
+        try {
+            Command command = Parser.parse(input);
+            return command.execute(taskList, ui, storage);
+        } catch (ChattyException e) {
+            return ui.sendError(e.getMessage());
+        }
     }
 }
