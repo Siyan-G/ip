@@ -1,10 +1,9 @@
 package chatty.command;
 
 import chatty.controller.Storage;
-import chatty.controller.Ui;
 import chatty.task.Event;
 import chatty.task.TaskList;
-
+import chatty.ui.Ui;
 /**
  * Represents a command to add a new event to the task list.
  * <p>
@@ -41,11 +40,11 @@ public class EventCommand extends Command {
      * @param storage The storage responsible for saving tasks.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         Event newEvent = new Event(eventDescription, startTime, endTime);
         tasks.add(newEvent);
         storage.saveTasks(tasks);
-        ui.sendMessage(String.format("New event %s added to the list.\nNow you have %d tasks.",
+        return ui.getMessage(String.format("New event %s added to the list.\nNow you have %d tasks.",
                 newEvent,
                 tasks.getNumOfTasks()));
     }

@@ -1,8 +1,8 @@
 package chatty.command;
 
 import chatty.controller.Storage;
-import chatty.controller.Ui;
 import chatty.task.TaskList;
+import chatty.ui.Ui;
 
 /**
  * Represents a command to exit the application.
@@ -28,8 +28,8 @@ public class ExitCommand extends Command {
      * @param storage The storage, which is not modified in this command.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        ui.sendExitMsg();
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
+        return ui.getExitMsg();
     }
 }
 

@@ -1,10 +1,11 @@
 package chatty.command;
 
 import chatty.controller.Storage;
-import chatty.controller.Ui;
 import chatty.task.Task;
 import chatty.task.TaskList;
 import chatty.task.Todo;
+import chatty.ui.Ui;
+
 
 /**
  * Represents a command to add a new "To-Do" task to the task list.
@@ -34,11 +35,11 @@ public class TodoCommand extends Command {
      * @param storage The storage responsible for saving tasks.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         Task task = new Todo(description);
         tasks.add(task);
         storage.saveTasks(tasks);
-        ui.sendMessage(String.format("Task %s added to list.\nYou now have %d tasks tracked",
+        return ui.getMessage(String.format("Task %s added to list.\nYou now have %d tasks tracked",
                 description,
                 tasks.getNumOfTasks()));
     }

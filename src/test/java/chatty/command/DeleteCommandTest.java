@@ -8,11 +8,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import chatty.controller.Storage;
-import chatty.controller.Ui;
 import chatty.exception.ChattyTaskNotFoundException;
 import chatty.task.Task;
 import chatty.task.TaskList;
 import chatty.task.Todo;
+import chatty.ui.Ui;
 
 /**
  * Unit test class for the {@link DeleteCommand} class.
@@ -64,7 +64,7 @@ class DeleteCommandTest {
         assertThrows(ChattyTaskNotFoundException.class, () -> tasks.getTask(taskIndex));
 
         // Verifies that the correct message was sent to the UI
-        verify(ui).sendMessage(String.format("Task %d %s has been deleted", taskIndex, taskToDelete));
+        verify(ui).getMessage(String.format("Task %d %s has been deleted", taskIndex, taskToDelete));
 
         // Verifies that the tasks were saved after the deletion
         verify(storage).saveTasks(tasks);

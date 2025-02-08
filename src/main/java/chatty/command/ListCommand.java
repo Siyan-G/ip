@@ -1,8 +1,8 @@
 package chatty.command;
 
 import chatty.controller.Storage;
-import chatty.controller.Ui;
 import chatty.task.TaskList;
+import chatty.ui.Ui;
 
 /**
  * Represents a command to list all tasks in the task list.
@@ -22,8 +22,8 @@ public class ListCommand extends Command {
      * @param storage The storage, which is not modified in this command.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        ui.sendMessage(String.format("You currently have %d tasks in the list%s",
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
+        return ui.getMessage(String.format("You currently have %d tasks in the list%s",
                 tasks.getNumOfTasks(),
                 tasks));
     }

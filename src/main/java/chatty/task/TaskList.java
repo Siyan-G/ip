@@ -175,8 +175,7 @@ public class TaskList {
         if (numOfTasks == 0) {
             return "No task currently";
         } else {
-            StringBuilder sb = new StringBuilder(String.format("You current have %d tasks in the list",
-                    this.getNumOfTasks()));
+            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < numOfTasks; i++) {
                 sb.append("\n").append(String.format("%d. %s", i + 1, tasks.get(i).toString()));
             }

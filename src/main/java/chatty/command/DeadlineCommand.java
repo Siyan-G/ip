@@ -3,9 +3,9 @@ package chatty.command;
 import java.time.LocalDateTime;
 
 import chatty.controller.Storage;
-import chatty.controller.Ui;
 import chatty.task.Deadline;
 import chatty.task.TaskList;
+import chatty.ui.Ui;
 
 /**
  * Represents a command to add a deadline to a list of tasks.
@@ -39,11 +39,11 @@ public class DeadlineCommand extends Command {
      * @param storage The storage responsible for saving tasks.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         Deadline deadline = new Deadline(this.description, this.deadline);
         tasks.add(deadline);
         storage.saveTasks(tasks);
-        ui.sendMessage(String.format("Deadline %s added to the list\nNow you have %d tasks in the list",
+        return ui.getMessage(String.format("Deadline %s added to the list\nNow you have %d tasks in the list",
                 deadline,
                 tasks.getNumOfTasks()));
     }

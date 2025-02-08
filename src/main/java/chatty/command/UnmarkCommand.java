@@ -1,10 +1,10 @@
 package chatty.command;
 
 import chatty.controller.Storage;
-import chatty.controller.Ui;
 import chatty.exception.ChattyTaskNotFoundException;
 import chatty.task.Task;
 import chatty.task.TaskList;
+import chatty.ui.Ui;
 
 /**
  * Represents a command to unmark a task as incomplete.
@@ -35,11 +35,11 @@ public class UnmarkCommand extends Command {
      * @throws ChattyTaskNotFoundException If the task with the given ID is not found in the task list.
      */
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws ChattyTaskNotFoundException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws ChattyTaskNotFoundException {
         tasks.unmark(taskId);
         storage.saveTasks(tasks);
         Task unmarkedTask = tasks.getTask(taskId);
-        ui.sendMessage(String.format("Marked chatty.task %d %s as incompleted", taskId, unmarkedTask));
+        return ui.getMessage(String.format("Marked task %d %s as incompleted", taskId, unmarkedTask));
     }
 }
 
