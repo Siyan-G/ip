@@ -133,16 +133,14 @@ public class TaskList {
      */
     public TaskList tasksContain(String keyword) {
         TaskList taskList = new TaskList();
-        if (this.tasks.isEmpty()) {
-            return taskList;
-        } else {
-            for (int i = 0; i < this.tasks.size(); i++) {
-                if (tasks.get(i).contains(keyword)) {
-                    taskList.add(tasks.get(i));
+        if (!this.tasks.isEmpty()) {
+            for (Task task : this.tasks) {
+                if (task.contains(keyword)) {
+                    taskList.add(task);
                 }
             }
-            return taskList;
         }
+        return taskList;
     }
 
     /**

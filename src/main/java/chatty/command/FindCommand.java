@@ -14,7 +14,7 @@ import chatty.ui.Ui;
  * </p>
  */
 public class FindCommand extends Command {
-    private String keyword;
+    private final String keyword;
 
     /**
      * Constructs a {@link FindCommand} with the specified keyword.
@@ -46,7 +46,7 @@ public class FindCommand extends Command {
             return ui.getMessage(String.format("Found %d task(s) with keyword: %s\n%s",
                     relevantTasks.getNumOfTasks(),
                     this.keyword,
-                    relevantTasks.toString()));
+                    relevantTasks));
         }
     }
 }
