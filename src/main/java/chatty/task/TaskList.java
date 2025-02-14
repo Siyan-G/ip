@@ -49,6 +49,7 @@ public class TaskList {
         if (index <= 0 || index > tasks.size()) {
             throw new ChattyTaskNotFoundException(index);
         } else {
+            assert this.tasks.get(index - 1) != null : "Task should exit in the list";
             return tasks.get(index - 1);
         }
     }
@@ -72,6 +73,7 @@ public class TaskList {
         if (index <= 0 || index > numOfTasks) {
             throw new ChattyTaskNotFoundException(index);
         } else {
+            assert tasks.get(index - 1) != null : "task should exist in the list";
             tasks.remove(index - 1);
             numOfTasks--;
         }
