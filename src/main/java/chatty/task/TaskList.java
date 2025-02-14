@@ -48,6 +48,7 @@ public class TaskList {
         } else {
             assert this.tasks.get(index - 1) != null : "Task should exit in the list";
             return tasks.get(index - 1);
+        }
     }
 
     /**
@@ -71,7 +72,7 @@ public class TaskList {
         } else {
             assert tasks.get(index - 1) != null : "task should exist in the list";
             tasks.remove(index - 1);
-            numOfTasks--
+        }
     }
 
     /**
@@ -132,10 +133,10 @@ public class TaskList {
      */
     public TaskList tasksContain(String keyword) {
         TaskList taskList = new TaskList();
-        if (numOfTasks == 0) {
+        if (this.tasks.isEmpty()) {
             return taskList;
         } else {
-            for (int i = 0; i < numOfTasks; i++) {
+            for (int i = 0; i < this.tasks.size(); i++) {
                 if (tasks.get(i).contains(keyword)) {
                     taskList.add(tasks.get(i));
                 }
