@@ -45,8 +45,9 @@ public class TaskList {
     public Task getTask(int index) throws ChattyTaskNotFoundException {
         if (index <= 0 || index > tasks.size()) {
             throw new ChattyTaskNotFoundException(index);
-        }
-        return tasks.get(index - 1);
+        } else {
+            assert this.tasks.get(index - 1) != null : "Task should exit in the list";
+            return tasks.get(index - 1);
     }
 
     /**
@@ -67,8 +68,10 @@ public class TaskList {
     public void delete(int index) throws ChattyTaskNotFoundException {
         if (index <= 0 || index > tasks.size()) {
             throw new ChattyTaskNotFoundException(index);
-        }
-        tasks.remove(index - 1);
+        } else {
+            assert tasks.get(index - 1) != null : "task should exist in the list";
+            tasks.remove(index - 1);
+            numOfTasks--
     }
 
     /**
@@ -128,10 +131,17 @@ public class TaskList {
      *         task list is returned.
      */
     public TaskList tasksContain(String keyword) {
-        List<Task> filteredTasks = tasks.stream()
-                .filter(task -> task.contains(keyword))
-                .collect(Collectors.toList());
-        return new TaskList(filteredTasks);
+        TaskList taskList = new TaskList();
+        if (numOfTasks == 0) {
+            return taskList;
+        } else {
+            for (int i = 0; i < numOfTasks; i++) {
+                if (tasks.get(i).contains(keyword)) {
+                    taskList.add(tasks.get(i));
+                }
+            }
+            return taskList;
+        }
     }
 
     /**

@@ -54,7 +54,7 @@ test {
 }
 
 application {
-    mainClass.set("Launcher")
+    mainClass.set("chatty.Launcher")
 }
 
 shadowJar {
@@ -65,4 +65,5 @@ shadowJar {
 
 run{
     standardInput = System.in
+    enableAssertions = true
 }
