@@ -146,10 +146,8 @@ public class TaskList {
      * @param keyword The keyword to search for in the task names.
      * @return A {@link TaskList} containing all tasks whose names contain the keyword. If no tasks match, an empty
      *         task list is returned.
-     * @throws ChattyTaskNotFoundException If there are no tasks in the list or if none of the tasks contain the
-     *         keyword.
      */
-    public TaskList tasksContain(String keyword) throws ChattyTaskNotFoundException {
+    public TaskList tasksContain(String keyword) {
         TaskList taskList = new TaskList();
         if (numOfTasks == 0) {
             return taskList;
