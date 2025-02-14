@@ -2,6 +2,7 @@ package chatty.task;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import chatty.exception.ChattyTaskNotFoundException;
 
@@ -16,26 +17,22 @@ import chatty.exception.ChattyTaskNotFoundException;
 public class TaskList {
 
     private final List<Task> tasks;
-    private int numOfTasks;
 
     /**
      * Constructs a new empty task list.
-     * Initializes an empty list of tasks and sets the number of tasks to 0.
+     * Initializes an empty list of tasks.
      */
     public TaskList() {
         this.tasks = new ArrayList<>();
-        this.numOfTasks = 0;
     }
 
     /**
-     * Constructs a task list with a given list of tasks and the number of tasks.
+     * Constructs a task list with a given list of tasks.
      *
-     * @param tasks      The list of tasks.
-     * @param numOfTasks The number of tasks in the list.
+     * @param tasks The list of tasks.
      */
-    public TaskList(ArrayList<Task> tasks, int numOfTasks) {
-        this.tasks = tasks;
-        this.numOfTasks = numOfTasks;
+    public TaskList(List<Task> tasks) {
+        this.tasks = new ArrayList<>(tasks);
     }
 
     /**
@@ -51,7 +48,6 @@ public class TaskList {
         } else {
             assert this.tasks.get(index - 1) != null : "Task should exit in the list";
             return tasks.get(index - 1);
-        }
     }
 
     /**
@@ -60,7 +56,7 @@ public class TaskList {
      * @return The number of tasks in the list.
      */
     public int getNumOfTasks() {
-        return numOfTasks;
+        return tasks.size();
     }
 
     /**
@@ -70,13 +66,12 @@ public class TaskList {
      * @throws ChattyTaskNotFoundException If the task at the specified index does not exist.
      */
     public void delete(int index) throws ChattyTaskNotFoundException {
-        if (index <= 0 || index > numOfTasks) {
+        if (index <= 0 || index > tasks.size()) {
             throw new ChattyTaskNotFoundException(index);
         } else {
             assert tasks.get(index - 1) != null : "task should exist in the list";
             tasks.remove(index - 1);
-            numOfTasks--;
-        }
+            numOfTasks--
     }
 
     /**
@@ -86,9 +81,7 @@ public class TaskList {
      * @return True if the task was added successfully.
      */
     public boolean add(Task task) {
-        this.tasks.add(task);
-        numOfTasks++;
-        return true;
+        return tasks.add(task);
     }
 
     /**
@@ -98,11 +91,7 @@ public class TaskList {
      * @throws ChattyTaskNotFoundException If the task at the specified index does not exist.
      */
     public void mark(int index) throws ChattyTaskNotFoundException {
-        if (index <= 0 || index > numOfTasks) {
-            throw new ChattyTaskNotFoundException(index);
-        } else {
-            tasks.get(index - 1).markDone();
-        }
+        getTask(index).markDone();
     }
 
     /**
@@ -112,11 +101,7 @@ public class TaskList {
      * @throws ChattyTaskNotFoundException If the task at the specified index does not exist.
      */
     public void unmark(int index) throws ChattyTaskNotFoundException {
-        if (index <= 0 || index > numOfTasks) {
-            throw new ChattyTaskNotFoundException(index);
-        } else {
-            tasks.get(index - 1).unmarkDone();
-        }
+        getTask(index).unmarkDone();
     }
 
     /**
@@ -128,11 +113,9 @@ public class TaskList {
      * @return An array of strings representing the tasks in CSV format.
      */
     public String[] toCsv() {
-        String[] taskList = new String[numOfTasks];
-        for (int i = 0; i < numOfTasks; i++) {
-            taskList[i] = tasks.get(i).toCsv();
-        }
-        return taskList;
+        return tasks.stream()
+                .map(Task::toCsv)
+                .toArray(String[]::new);
     }
 
     /**
@@ -172,14 +155,11 @@ public class TaskList {
      */
     @Override
     public String toString() {
-        if (numOfTasks == 0) {
+        if (tasks.isEmpty()) {
             return "No task currently";
-        } else {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < numOfTasks; i++) {
-                sb.append("\n").append(String.format("%d. %s", i + 1, tasks.get(i).toString()));
-            }
-            return sb.toString();
         }
+        return tasks.stream()
+                .map(task -> String.format("%d. %s", tasks.indexOf(task) + 1, task))
+                .collect(Collectors.joining("\n"));
     }
 }
