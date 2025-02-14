@@ -49,6 +49,7 @@ public class TaskList {
         if (index <= 0 || index > tasks.size()) {
             throw new ChattyTaskNotFoundException(index);
         } else {
+            assert this.tasks.get(index - 1) != null : "Task should exit in the list";
             return tasks.get(index - 1);
         }
     }
@@ -72,6 +73,7 @@ public class TaskList {
         if (index <= 0 || index > numOfTasks) {
             throw new ChattyTaskNotFoundException(index);
         } else {
+            assert tasks.get(index - 1) != null : "task should exist in the list";
             tasks.remove(index - 1);
             numOfTasks--;
         }
@@ -144,10 +146,8 @@ public class TaskList {
      * @param keyword The keyword to search for in the task names.
      * @return A {@link TaskList} containing all tasks whose names contain the keyword. If no tasks match, an empty
      *         task list is returned.
-     * @throws ChattyTaskNotFoundException If there are no tasks in the list or if none of the tasks contain the
-     *         keyword.
      */
-    public TaskList tasksContain(String keyword) throws ChattyTaskNotFoundException {
+    public TaskList tasksContain(String keyword) {
         TaskList taskList = new TaskList();
         if (numOfTasks == 0) {
             return taskList;
