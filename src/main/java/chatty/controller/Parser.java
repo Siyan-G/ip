@@ -18,6 +18,12 @@ import chatty.exception.ChattyInvalidInputException;
 
 /**
  * The Parser class is responsible for parsing user input commands and returning the corresponding Command object.
+ * <p>
+ * This class processes a given string command, identifies the type of command, and constructs the appropriate Command
+ * object. It also validates the format of the user input and throws exceptions for invalid inputs. Supported commands
+ * include tasks management (such as adding, deleting, marking, and unmarking tasks), as well as event and deadline
+ * management.
+ * </p>
  */
 public class Parser {
 
@@ -135,8 +141,8 @@ public class Parser {
     private static Command parseEventCommand(String command) throws ChattyInvalidInputException {
         String eventDetails = command.substring(5).trim();
         if (eventDetails.isEmpty()) {
-            throw new ChattyInvalidInputException("Please add details of an event: i.e."
-                    + "\"event <description> /from <start> /to <end>\"");
+            throw new ChattyInvalidInputException("Please add details of an event: "
+                    + "i.e.\"event <description> /from <start> /to <end>\"");
         }
         String[] eventParts = eventDetails.split("/from");
         for (String part : eventParts) {
@@ -167,7 +173,7 @@ public class Parser {
         String deadlineDetails = command.substring(8).trim();
         if (deadlineDetails.isEmpty()) {
             throw new ChattyInvalidInputException("Please add details of deadline: i.e."
-                    + "\"deadline <description> /by <dd/MM/yyyy HHmm>\"");
+                    + "\"deadline <description> " + "/by <dd/MM/yyyy HHmm>\"");
         }
         String[] details = deadlineDetails.split("/by");
         if (details.length != 2) {
