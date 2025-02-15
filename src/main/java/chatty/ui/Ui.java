@@ -11,12 +11,17 @@ public class Ui {
     private static final String INTRO_MSG = "Hello Master! I'm Chatty, your ever-ready personal assistant."
             + "\nHow can I help you today?";
     private static final String EXIT_MSG = "Goodbye Master! See you soon!";
-    private static final String HELP_MSG = "Here are some commands you can use:\n"
-            + "- todo [task]: Adds a new task\n"
-            + "- deadline [task] /by [date]: Adds a task with a deadline\n"
-            + "- event [task] /at [date]: Adds an event\n"
-            + "- list: Displays all tasks\n"
-            + "- bye: Exits the application";
+    private static final String HELP_MSG = """
+            Here are some commands you can use:
+            - todo [task]: Adds a new task
+            - deadline [task] /by [dd/mm/yyyy hhmm]: Adds a task with a deadline
+            - event [task] /at [date]: Adds an event
+            - list: Displays all tasks
+            - bye: Exits the application\
+            - mark [task number]: to mark a task as completed
+            - unmark [task number]: to mark a task as not completed
+            - find [keyword]: to find all tasks containing the keyword in the description
+            - bye: to exit the application""";
 
     /**
      * Returns the introduction message to welcome the user.
