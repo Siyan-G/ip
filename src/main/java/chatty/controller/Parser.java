@@ -10,6 +10,7 @@ import chatty.command.DeleteCommand;
 import chatty.command.EventCommand;
 import chatty.command.ExitCommand;
 import chatty.command.FindCommand;
+import chatty.command.HelpCommand;
 import chatty.command.ListCommand;
 import chatty.command.MarkCommand;
 import chatty.command.TodoCommand;
@@ -128,6 +129,9 @@ public class Parser {
                     }
                 }
             }
+        }
+        if (command.startsWith("help")) {
+            return new HelpCommand();
         }
         throw new ChattyInvalidInputException(command);
     }
