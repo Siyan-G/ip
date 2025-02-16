@@ -8,7 +8,7 @@ package chatty.exception;
  * caused the error.
  * </p>
  */
-public class ChattyInvalidInputException extends ChattyException {
+public class ChattyInvalidCommandException extends ChattyException {
 
     private final String command;
 
@@ -17,7 +17,7 @@ public class ChattyInvalidInputException extends ChattyException {
      *
      * @param command The command that caused the invalid input error.
      */
-    public ChattyInvalidInputException(String command) {
+    public ChattyInvalidCommandException(String command) {
         this.command = command;
     }
 
@@ -31,7 +31,7 @@ public class ChattyInvalidInputException extends ChattyException {
      */
     @Override
     public String getMessage() {
-        return String.format("I could not execute this command: %s", command);
+        return String.format("Yikes, I supported with this command: %s", command);
     }
 
     /**
@@ -44,7 +44,7 @@ public class ChattyInvalidInputException extends ChattyException {
      */
     @Override
     public String toString() {
-        return String.format("I could not execute this command: %s", command);
+        return String.format("Yikes, I supported with this command: %s", command);
     }
 }
 

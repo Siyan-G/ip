@@ -15,7 +15,8 @@ import chatty.command.ListCommand;
 import chatty.command.MarkCommand;
 import chatty.command.TodoCommand;
 import chatty.command.UnmarkCommand;
-import chatty.exception.ChattyInvalidInputException;
+import chatty.exception.ChattyInvalidCommandException;
+import chatty.exception.ChattyInvalidCommandFormatException;
 
 /**
  * The Parser class is responsible for parsing user input commands and returning the corresponding Command object.
@@ -33,9 +34,10 @@ public class Parser {
      *
      * @param command The user input command string to be parsed.
      * @return The appropriate Command object based on the user input.
-     * @throws ChattyInvalidInputException If the command format is incorrect or unsupported.
+     * @throws ChattyInvalidCommandException If the command format is incorrect or unsupported.
      */
-    public static Command parse(String command) throws ChattyInvalidInputException {
+    public static Command parse(String command)
+            throws ChattyInvalidCommandException, ChattyInvalidCommandFormatException {
         if (command.startsWith("bye")) {
             return new ExitCommand();
         } else if (command.startsWith("list")) {
@@ -58,7 +60,7 @@ public class Parser {
         if (command.startsWith("help")) {
             return new HelpCommand();
         }
-        throw new ChattyInvalidInputException(command);
+        throw new ChattyInvalidCommandException(command);
     }
 
     /**
@@ -66,12 +68,12 @@ public class Parser {
      *
      * @param command The user input command string.
      * @return The corresponding FindCommand.
-     * @throws ChattyInvalidInputException If the command format is incorrect.
+     * @throws ChattyInvalidCommandFormatException If the command format is incorrect.
      */
-    private static Command parseFindCommand(String command) throws ChattyInvalidInputException {
+    private static Command parseFindCommand(String command) throws ChattyInvalidCommandFormatException {
         String[] parts = command.split(" ");
         if (parts.length != 2) {
-            throw new ChattyInvalidInputException("only one keyword is allowed");
+            throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.FIND);
         }
         return new FindCommand(parts[1]);
     }
@@ -82,8 +84,11 @@ public class Parser {
      * @param command The user input command string.
      * @return The corresponding DeleteCommand.
      */
-    private static Command parseDeleteCommand(String command) {
+    private static Command parseDeleteCommand(String command) throws ChattyInvalidCommandFormatException {
         String[] commandParts = command.split(" ");
+        if (commandParts.length != 2) {
+            throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.DELETE);
+        }
         int taskId = Integer.parseInt(commandParts[1]);
         return new DeleteCommand(taskId);
     }
@@ -93,12 +98,12 @@ public class Parser {
      *
      * @param command The user input command string.
      * @return The corresponding MarkCommand.
-     * @throws ChattyInvalidInputException If the command format is incorrect.
+     * @throws ChattyInvalidCommandFormatException If the command format is incorrect.
      */
-    private static Command parseMarkCommand(String command) throws ChattyInvalidInputException {
+    private static Command parseMarkCommand(String command) throws ChattyInvalidCommandFormatException {
         String[] commandParts = command.split(" ");
         if (commandParts.length != 2) {
-            throw new ChattyInvalidInputException("Wrong \"mark\" chatty.command format");
+            throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.MARK);
         }
         int taskId = Integer.parseInt(commandParts[1]);
         return new MarkCommand(taskId);
@@ -109,12 +114,12 @@ public class Parser {
      *
      * @param command The user input command string.
      * @return The corresponding UnmarkCommand.
-     * @throws ChattyInvalidInputException If the command format is incorrect.
+     * @throws ChattyInvalidCommandFormatException If the command format is incorrect.
      */
-    private static Command parseUnmarkCommand(String command) throws ChattyInvalidInputException {
+    private static Command parseUnmarkCommand(String command) throws ChattyInvalidCommandFormatException {
         String[] commandParts = command.split(" ");
         if (commandParts.length != 2) {
-            throw new ChattyInvalidInputException("Wrong \"unmark\" chatty.command format");
+            throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.UNMARK);
         }
         int taskId = Integer.parseInt(commandParts[1]);
         return new UnmarkCommand(taskId);
@@ -125,12 +130,12 @@ public class Parser {
      *
      * @param command The user input command string.
      * @return The corresponding TodoCommand.
-     * @throws ChattyInvalidInputException If no description is provided.
+     * @throws ChattyInvalidCommandFormatException If no description is provided.
      */
-    private static Command parseTodoCommand(String command) throws ChattyInvalidInputException {
+    private static Command parseTodoCommand(String command) throws ChattyInvalidCommandFormatException {
         String description = command.substring(4).trim();
         if (description.isEmpty()) {
-            throw new ChattyInvalidInputException("Please add a description after \"todo\" separated by a space");
+            throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.TODO);
         }
         return new TodoCommand(description);
     }
@@ -140,25 +145,24 @@ public class Parser {
      *
      * @param command The user input command string.
      * @return The corresponding EventCommand.
-     * @throws ChattyInvalidInputException If the event format is incorrect.
+     * @throws ChattyInvalidCommandFormatException If the event format is incorrect.
      */
-    private static Command parseEventCommand(String command) throws ChattyInvalidInputException {
+    private static Command parseEventCommand(String command) throws ChattyInvalidCommandFormatException {
         String eventDetails = command.substring(5).trim();
         if (eventDetails.isEmpty()) {
-            throw new ChattyInvalidInputException("Please add details of an event: "
-                    + "i.e.\"event <description> /from <start> /to <end>\"");
+            throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.EVENT);
         }
         String[] eventParts = eventDetails.split("/from");
         for (String part : eventParts) {
             if (part.isEmpty()) {
-                throw new ChattyInvalidInputException("Please follow correct event chatty.command format");
+                throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.EVENT);
             }
         }
         String description = eventParts[0];
         String[] durationParts = eventParts[1].split("/to");
         for (String part : durationParts) {
             if (part.trim().isEmpty()) {
-                throw new ChattyInvalidInputException("Please follow correct event chatty.command format");
+                throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.EVENT);
             }
         }
         String start = durationParts[0].trim();
@@ -171,18 +175,16 @@ public class Parser {
      *
      * @param command The user input command string.
      * @return The corresponding DeadlineCommand.
-     * @throws ChattyInvalidInputException If the deadline format is incorrect.
+     * @throws ChattyInvalidCommandFormatException If the deadline format is incorrect.
      */
-    private static Command parseDeadlineCommand(String command) throws ChattyInvalidInputException {
+    private static Command parseDeadlineCommand(String command) throws ChattyInvalidCommandFormatException {
         String deadlineDetails = command.substring(8).trim();
         if (deadlineDetails.isEmpty()) {
-            throw new ChattyInvalidInputException("Please add details of deadline: i.e."
-                    + "\"deadline <description> " + "/by <dd/MM/yyyy HHmm>\"");
+            throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.DEADLINE);
         }
         String[] details = deadlineDetails.split("/by");
         if (details.length != 2) {
-            throw new ChattyInvalidInputException("Please input correct format of deadline command: "
-                    + "\"deadline <description> /by <dd/MM/yyyy HHmm>\"");
+            throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.DEADLINE);
         }
         try {
             String deadlineDescription = details[0].trim();
@@ -191,7 +193,7 @@ public class Parser {
             LocalDateTime deadline = LocalDateTime.parse(dueString, formatter);
             return new DeadlineCommand(deadlineDescription, deadline);
         } catch (DateTimeParseException e) {
-            throw new ChattyInvalidInputException("Please enter a valid deadline format dd/MM/yyyy HHmm");
+            throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.DEADLINE);
         }
     }
 }
