@@ -9,7 +9,7 @@ package chatty.exception;
  */
 public class ChattyTaskNotFoundException extends ChattyException {
 
-    private int taskId;
+    private final int taskId;
 
     /**
      * Constructs a new ChattyTaskNotFoundException with the specified task ID.
