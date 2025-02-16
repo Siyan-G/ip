@@ -1,30 +1,83 @@
-# Duke User Guide
+# Chatty User Guide
 
-// Update the title above to match the actual product name
+## Quick Start
 
-// Product screenshot goes here
+1. **Ensure you have Java 17 or above installed** on your computer.
+    - **Mac users**: Ensure you have the exact JDK version prescribed [here](#).
 
-// Product intro goes here
+2. **Download the latest `.jar` file** from [here](#).
 
-## Adding deadlines
+3. **Copy the file** to the folder you want to use as the home folder for your Chatty bot.
 
-// Describe the action and its outcome.
+4. **Open a command terminal**:
+    - `cd` into the folder where you placed the `chatty.jar` file.
 
-// Give examples of usage
+5. **Run the application** using the following command:
+   ```bash
+   java -jar chatty.jar
 
-Example: `keyword (optional arguments)`
+6. The GUI should appear in a few seconds similar to the picture below.
+   ![Screenshot of the GUI](/docs/Ui.png)
 
-// A description of the expected outcome goes here
+7. Type the command in the command box and press Enter to execute it. e.g. typing 'help' and clicking 'Send' will show you a list of commands available with their formats
 
-```
-expected output
-```
+## Available Commands
 
-## Feature ABC
+**Warning:** All commands are case-sensitive and must be typed in lowercase.
 
-// Feature details
+### 1. `todo [task]`
+Adds a new task without a deadline.  
+**Example**: `todo buy groceries`
 
+### 2. `deadline [task] /by [dd/mm/yyyy hhmm]`
+Adds a task with a specific deadline.  
+**Example**: `deadline submit assignment /by 20/02/2025 2359`
 
-## Feature XYZ
+### 3. `event [task] /from [start date/time] /to [end date/time]`
+Adds an event with a specific date.  
+**Example**: `event dental appointment /from 05-03/25 10am /to 11am`
 
-// Feature details
+### 4. `list`
+Displays all tasks.  
+**Example**: `list`
+
+### 5. `mark [task number]`
+Marks a specific task as completed.  
+**Example**: `mark 2`
+
+### 6. `unmark [task number]`
+Marks a specific task as not completed.  
+**Example**: `unmark 2`
+
+### 7. `find [keyword]`
+Finds all tasks containing the specified keyword in the description.  
+**Example**: `find groceries`
+
+### 8. `delete [task number]`
+Deletes a specific task.  
+**Example**: `delete 3`
+
+### 9. `help`
+Displays a list of available commands.  
+**Example**: `help`
+
+### 10. `bye`
+Exits the application.  
+**Example**: `bye`
+
+---
+
+## Command Summary
+
+| Command                                                    | Description                                           |
+|------------------------------------------------------------|-------------------------------------------------------|
+| `todo [task]`                                              | Adds a new task without a deadline.                   |
+| `deadline [task] /by [dd/mm/yyyy hhmm]`                    | Adds a task with a specific deadline.                 |
+| `event [task] /from [start date/time] /to [end date/time]` | Adds an event with a specific date.                   |
+| `list`                                                     | Displays all tasks.                                  |
+| `mark [task number]`                                       | Marks a specific task as completed.                  |
+| `unmark [task number]`                                     | Marks a specific task as not completed.              |
+| `delete [task number]`                                     | Deletes a specific task.                             |
+| `help`                                                     | Displays a list of available commands.               |
+| `find [keyword]`                                           | Finds all tasks containing the specified keyword.    |
+| `bye`                                                      | Exits the application.                               |
