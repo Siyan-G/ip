@@ -13,8 +13,11 @@
     - `cd` into the folder where you placed the `chatty.jar` file.
 
 5. **Run the application** using the following command:
-   ```bash
+   <pre>
+   <code>
    java -jar chatty.jar
+   </code>
+   </pre>
 
 6. The GUI should appear in a few seconds similar to the picture below.
    ![Screenshot of the GUI](https://Siyan-G.github.io/ip/Ui.png)
