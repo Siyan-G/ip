@@ -17,7 +17,7 @@
    java -jar chatty.jar
    
 6. The GUI should appear in a few seconds similar to the picture below.
-   ![Screenshot of the GUI](/docs/Ui.png)
+   ![Screenshot of the GUI](https://Siyan-G.github.io/ip/Ui.png)
 
 7. Type the command in the text field and click Send to execute it. e.g. typing 'help' and clicking 'Send' will show you a list of commands available with their formats
 
