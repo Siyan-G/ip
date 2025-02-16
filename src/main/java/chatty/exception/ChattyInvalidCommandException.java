@@ -31,7 +31,7 @@ public class ChattyInvalidCommandException extends ChattyException {
      */
     @Override
     public String getMessage() {
-        return String.format("Yikes, I supported with this command: %s", command);
+        return String.format("Yikes, I am not supported with this command: %s", command);
     }
 
     /**
