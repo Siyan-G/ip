@@ -11,7 +11,7 @@ import javafx.application.Application;
  */
 public class Launcher {
     /**
-     * The main method that launches the Chatty application.
+     * Launches the Chatty application.
      *
      * @param args Command-line arguments passed to the application.
      */
