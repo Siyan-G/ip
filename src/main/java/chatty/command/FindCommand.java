@@ -43,7 +43,7 @@ public class FindCommand extends Command {
         if (relevantTasks == null || relevantTasks.getNumOfTasks() == 0) {
             return ui.getMessage("No task found with keyword " + keyword);
         } else {
-            return ui.getMessage(String.format("Woohoo! I found %d tasks with keyword: %s\n%s",
+            return ui.getMessage(String.format("Woohoo! I found %d tasks with keyword: %s\n%s:",
                     relevantTasks.getNumOfTasks(),
                     this.keyword,
                     relevantTasks));

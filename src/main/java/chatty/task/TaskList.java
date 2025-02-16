@@ -155,7 +155,7 @@ public class TaskList {
     @Override
     public String toString() {
         if (tasks.isEmpty()) {
-            return "No task currently";
+            return "";
         }
         return tasks.stream()
                 .map(task -> String.format("%d. %s", tasks.indexOf(task) + 1, task))

@@ -40,7 +40,7 @@ public class DeleteCommand extends Command {
         Task deletedTask = tasks.getTask(taskIndex);
         tasks.delete(taskIndex);
         storage.saveTasks(tasks);
-        return ui.getMessage(String.format("Yikes! Task %d: %s, has been deleted", taskIndex, deletedTask));
+        return ui.getMessage(String.format("Yikes! Task %d: %s, has been deleted.", taskIndex, deletedTask));
     }
 }
 

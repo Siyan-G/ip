@@ -39,6 +39,6 @@ public class MarkCommand extends Command {
         tasks.mark(taskId);
         storage.saveTasks(tasks);
         Task markedTask = tasks.getTask(taskId);
-        return ui.getMessage(String.format("YAY!!! task %d: %s, is completed", taskId, markedTask));
+        return ui.getMessage(String.format("YAY!!! task %d: %s, is completed.", taskId, markedTask));
     }
 }
