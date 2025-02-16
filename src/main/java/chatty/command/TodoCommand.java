@@ -39,7 +39,7 @@ public class TodoCommand extends Command {
         Task task = new Todo(description);
         tasks.add(task);
         storage.saveTasks(tasks);
-        return ui.getMessage(String.format("Task %s added to list.\nYou now have %d tasks tracked",
+        return ui.getMessage(String.format("New todo: %s, added to list.\nYou now have %d tasks tracked",
                 description,
                 tasks.getNumOfTasks()));
     }

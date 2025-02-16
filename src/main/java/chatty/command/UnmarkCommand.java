@@ -39,7 +39,7 @@ public class UnmarkCommand extends Command {
         tasks.unmark(taskId);
         storage.saveTasks(tasks);
         Task unmarkedTask = tasks.getTask(taskId);
-        return ui.getMessage(String.format("Marked task %d %s as incompleted", taskId, unmarkedTask));
+        return ui.getMessage(String.format("Uh oh!! task %d: %s, is incompleted", taskId, unmarkedTask));
     }
 }
 

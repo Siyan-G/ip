@@ -1,10 +1,9 @@
 T,0,see
 E,1,go home ,now,later
 D,1,read books,2025-02-15T14:58
-T,0,go for cny dinner
+T,1,go for cny dinner
 E,1,wedding ,now,later
 T,0,go home
 T,0,go homeeeeeeeee
 T,0,hommmmeeee
-E,1,home ,now,later
-D,0,home,2025-02-14T20:00
+E,0,home ,now,later
