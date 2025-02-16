@@ -3,9 +3,9 @@
 ## Quick Start
 
 1. **Ensure you have Java 17 or above installed** on your computer.
-    - **Mac users**: Ensure you have the exact JDK version prescribed [here](#).
+    - **Mac users**: Ensure you have the exact JDK version prescribed [placeholder here](#).
 
-2. **Download the latest `.jar` file** from [here](#).
+2. **Download the latest `.jar` file** from [placeholder here](#).
 
 3. **Copy the file** to the folder you want to use as the home folder for your Chatty bot.
 
