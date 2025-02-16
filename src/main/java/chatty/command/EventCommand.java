@@ -44,7 +44,7 @@ public class EventCommand extends Command {
         Event newEvent = new Event(eventDescription, startTime, endTime);
         tasks.add(newEvent);
         storage.saveTasks(tasks);
-        return ui.getMessage(String.format("New event %s added to the list.\nNow you have %d tasks.",
+        return ui.getMessage(String.format("New event: %s, has added to the list.\nNow you have %d tasks.",
                 newEvent,
                 tasks.getNumOfTasks()));
     }

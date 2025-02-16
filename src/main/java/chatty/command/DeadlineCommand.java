@@ -43,7 +43,7 @@ public class DeadlineCommand extends Command {
         Deadline deadline = new Deadline(this.description, this.deadline);
         tasks.add(deadline);
         storage.saveTasks(tasks);
-        return ui.getMessage(String.format("Deadline %s added to the list\nNow you have %d tasks in the list",
+        return ui.getMessage(String.format("New deadline: %s, added to the list\nNow you have %d tasks in the list",
                 deadline,
                 tasks.getNumOfTasks()));
     }
