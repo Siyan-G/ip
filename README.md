@@ -70,15 +70,15 @@ Exits the application.
 
 ## Command Summary
 
-| Command                                                    | Description                                           |
-|------------------------------------------------------------|-------------------------------------------------------|
-| `todo [task]`                                              | Adds a new task without a deadline.                   |
-| `deadline [task] /by [dd/mm/yyyy hhmm]`                    | Adds a task with a specific deadline.                 |
-| `event [task] /from [start date/time] /to [end date/time]` | Adds an event with a specific date.                   |
-| `list`                                                     | Displays all tasks.                                  |
-| `mark [task number]`                                       | Marks a specific task as completed.                  |
-| `unmark [task number]`                                     | Marks a specific task as not completed.              |
-| `delete [task number]`                                     | Deletes a specific task.                             |
-| `help`                                                     | Displays a list of available commands.               |
-| `find [keyword]`                                           | Finds all tasks containing the specified keyword.    |
-| `bye`                                                      | Exits the application.                               |
+| Command                                                    | Description                                       |
+|------------------------------------------------------------|---------------------------------------------------|
+| `todo [task]`                                              | Adds a new task without a deadline.               |
+| `deadline [task] /by [dd/mm/yyyy hhmm]`                    | Adds a task with a specific deadline.             |
+| `event [task] /from [start date/time] /to [end date/time]` | Adds an event with a specific duration.           |
+| `list`                                                     | Displays all tasks.                               |
+| `mark [task number]`                                       | Marks a specific task as completed.               |
+| `unmark [task number]`                                     | Marks a specific task as not completed.           |
+| `delete [task number]`                                     | Deletes a specific task.                          |
+| `help`                                                     | Displays a list of available commands.            |
+| `find [keyword]`                                           | Finds all tasks containing the specified keyword. |
+| `bye`                                                      | Exits the application.                            |

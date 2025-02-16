@@ -34,7 +34,7 @@ Adds a task with a specific deadline.
 **Example**: `deadline submit assignment /by 20/02/2025 2359`
 
 ### 3. `event [task] /from [start date/time] /to [end date/time]`
-Adds an event with a specific date.  
+Adds an event with a duration.  
 **Example**: `event dental appointment /from 05-03/25 10am /to 11am`
 
 ### 4. `list`
@@ -50,7 +50,7 @@ Marks a specific task as not completed.
 **Example**: `unmark 2`
 
 ### 7. `find [keyword]`
-Finds all tasks containing the specified keyword in the description.  
+Finds all tasks containing the specified keyword (case-sensitive) in the description.  
 **Example**: `find groceries`
 
 ### 8. `delete [task number]`
@@ -81,3 +81,4 @@ Exits the application.
 | `help`                                                     | Displays a list of available commands.               |
 | `find [keyword]`                                           | Finds all tasks containing the specified keyword.    |
 | `bye`                                                      | Exits the application.                               |
+
