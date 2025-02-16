@@ -1,7 +1,5 @@
 # Chatty User Guide
 
-# Chatty - User Guide
-
 ## Quick Start
 
 1. **Ensure you have Java 17 or above installed** on your computer.
