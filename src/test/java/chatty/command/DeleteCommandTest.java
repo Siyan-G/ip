@@ -64,7 +64,7 @@ class DeleteCommandTest {
         assertThrows(ChattyTaskNotFoundException.class, () -> tasks.getTask(taskIndex));
 
         // Verifies that the correct message was sent to the UI
-        verify(ui).getMessage(String.format("Yikes! Task %d: %s, has been deleted", taskIndex, taskToDelete));
+        verify(ui).getMessage(String.format("Yikes! Task %d: %s, has been deleted.", taskIndex, taskToDelete));
 
         // Verifies that the tasks were saved after the deletion
         verify(storage).saveTasks(tasks);
