@@ -19,7 +19,8 @@ import javafx.scene.layout.VBox;
 public class MainWindow extends AnchorPane {
 
     private static final String INTRO_MSG = "Hello Master! I'm Chatty, your ever-ready personal assistant."
-            + "\nHow can I help you today?";
+            + " How can I help you today?"
+            + "\nType \"help\" and click \"Send\" to view the list of command available";
 
     @FXML
     private ScrollPane scrollPane;
