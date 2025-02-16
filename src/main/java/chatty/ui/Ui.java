@@ -8,8 +8,9 @@ package chatty.ui;
  * </p>
  */
 public class Ui {
-    private static final String INTRO_MSG = "Hello Master! I'm Chatty, your ever-ready personal assistant. "
-            + "How can I help you today?";
+    private static final String INTRO_MSG = "Hello Master! I'm Chatty, your ever-ready personal assistant."
+            + "How can I help you today?"
+            + "\nType \"help\" and click \"Send\" to view the list of command available";
     private static final String EXIT_MSG = "Goodbye Master! See you soon!";
     private static final String HELP_MSG = """
             Here are some commands you can use:
@@ -66,6 +67,6 @@ public class Ui {
      * @return The formatted error message.
      */
     public String sendError(String msg) {
-        return "ERROR!! " + msg;
+        return msg;
     }
 }

@@ -9,7 +9,7 @@ package chatty.exception;
  */
 public class ChattyTaskNotFoundException extends ChattyException {
 
-    private int taskId;
+    private final int taskId;
 
     /**
      * Constructs a new ChattyTaskNotFoundException with the specified task ID.
@@ -30,7 +30,7 @@ public class ChattyTaskNotFoundException extends ChattyException {
      */
     @Override
     public String getMessage() {
-        return String.format(" Sorry! task %d could not be found", taskId);
+        return String.format("Sorry! task %d could not be found", taskId);
     }
 
     /**
@@ -43,7 +43,7 @@ public class ChattyTaskNotFoundException extends ChattyException {
      */
     @Override
     public String toString() {
-        return String.format(" Sorry! task %d could not be found", taskId);
+        return String.format("Sorry! task %d could not be found", taskId);
     }
 }
 
