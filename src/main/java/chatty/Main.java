@@ -38,6 +38,7 @@ public class Main extends Application {
             Scene scene = new Scene(ap);
             stage.getIcons().add(new Image(Main.class.getResourceAsStream("/images/logo.png")));
             stage.setTitle("Chatty");
+            stage.setResizable(true);
             stage.setScene(scene);
             stage.setMinHeight(220);
             stage.setMinWidth(417);
