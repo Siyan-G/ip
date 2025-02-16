@@ -3,7 +3,7 @@
 ## Quick Start
 
 1. **Ensure you have Java 17 or above installed** on your computer.
-   - **Mac users**: Ensure you have the exact JDK version prescribed [placeholder here](#).
+   - **Mac users**: Ensure you have the exact JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
 2. **Download the latest `.jar` file** from [placeholder here](#).
 
