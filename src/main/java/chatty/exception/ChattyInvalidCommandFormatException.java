@@ -105,7 +105,7 @@ public class ChattyInvalidCommandFormatException extends ChattyException {
      */
     @Override
     public String getMessage() {
-        return String.format("OOPSIES! Command: \"%s\" is incorrect.\nCorrect format: %s.\nExample: %s",
+        return String.format("Oopsies! Command format for \"%s\" is incorrect.\nCorrect format: %s.\nExample: %s",
                 commandType, commandType.correctCommandFormat(), commandType.exampleUsage());
     }
 

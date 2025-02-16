@@ -153,6 +153,9 @@ public class Parser {
             throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.EVENT);
         }
         String[] eventParts = eventDetails.split("/from");
+        if (eventParts.length != 2) {
+            throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.EVENT);
+        }
         for (String part : eventParts) {
             if (part.isEmpty()) {
                 throw new ChattyInvalidCommandFormatException(ChattyInvalidCommandFormatException.CommandType.EVENT);
