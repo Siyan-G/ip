@@ -1,11 +1,11 @@
 # Chatty User Guide
-___
+
 ## Introduction
 
 Chatty is a simple yet powerful task management chatbot designed to help you organize your tasks efficiently.
 It supports adding different types of tasks, marking them as completed, searching for tasks, and more—all
 through a command-line interface. This guide will walk you through how to install and use Chatty effectively.
-___
+
 ## Quick Start
 
 1. **Ensure you have Java 17 or above installed** on your computer.
@@ -33,7 +33,7 @@ ___
 
 7. Type your commands into the text field and press Send to execute them.
    For example, typing `help` and pressing Send will display a list of available commands.
-___
+
 ## Available Commands
 
 **Warning:** All commands are case-sensitive and must be typed in lowercase.
@@ -78,8 +78,6 @@ Displays a list of available commands.
 Exits the application.  
 **Example**: `bye`
 
----
-
 ## Command Summary
 
 | Command                                                    | Description                                           |
@@ -116,7 +114,7 @@ If you enter an incorrect command, Chatty will notify you and provide guidance o
 
 ### How do I reset Chatty?
 
-- Delete the task storage file (chatty.txt) in the home folder where chatty.jar is stored.
+- Delete the task storage file (chatty.csv) in the home folder where chatty.jar is stored.
 - Restart Chatty.
 
 #### Found a bug or have an idea for improvement? Report them in [GitHub Issues](https://github.com/Siyan-G/ip/issues).
