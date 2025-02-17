@@ -10,7 +10,7 @@ package chatty.ui;
 public class Ui {
     private static final String INTRO_MSG = "Hello Master! I'm Chatty, your ever-ready personal assistant."
             + "How can I help you today?"
-            + "\nType \"help\" and click \"Send\" to view the list of command available";
+            + "\nType \"help\" and click \"Send\" to view the list of commands available";
     private static final String EXIT_MSG = "Goodbye Master! See you soon!";
     private static final String HELP_MSG = """
             Here are some commands you can use:
